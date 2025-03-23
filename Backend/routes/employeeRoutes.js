@@ -42,7 +42,7 @@ router.get("/users", async (req, res) => {
     }
 });
 
-router.post("/add", authenticate, authorize(["user"]), upload.single("image"), async (req, res) => {
+router.post("/add", authenticate, authorize(["admin"]), upload.single("image"), async (req, res) => {
     try {
         const { 
             name, 
