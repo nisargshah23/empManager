@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../style/updateProfile.css";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const UpdateDetails = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const UpdateDetails = () => {
 
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/emp/users`);
+        const response = await fetch(`${apiUrl}/api/emp/users`);
         const data = await response.json();
 
         const employee = data.employees.find(emp => emp._id === id);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const DeleteEmployee = () => {
   const { id } = useParams(); // Get employee ID from the URL
@@ -20,7 +21,7 @@ const DeleteEmployee = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/emp/update/delete/${empId}`, {
+      const response = await fetch(`${apiUrl}/api/emp/update/delete/${empId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

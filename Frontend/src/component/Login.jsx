@@ -5,6 +5,7 @@ import Logo from "../assets/logo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import "../style/Auth.css";
 import { useNavigate } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,9 +22,9 @@ const Login = () => {
       setError("Please fill in all fields.");
       return;
     }
-
+    console.log(apiUrl)
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post(`${apiUrl}/api/auth/login`, {
         username,
         password,
       });

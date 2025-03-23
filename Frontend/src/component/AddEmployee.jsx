@@ -65,7 +65,7 @@ const AddEmployee = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/emp/add", data, {
+      const response = await axios.post(`${apiUrl}/api/emp/add`, data, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "multipart/form-data", // Ensures form-data format

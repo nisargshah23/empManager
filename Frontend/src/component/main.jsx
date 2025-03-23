@@ -16,6 +16,7 @@ import { Line, Pie, Bar } from "react-chartjs-2";
 import "../style/main.css";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 ChartJS.register(
   CategoryScale,
@@ -41,7 +42,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/emp/users")
+      .get(`${apiUrl}/api/emp/users`)
       .then((response) => {
         const employees = response.data.employees; // Fix: Access correct array
 

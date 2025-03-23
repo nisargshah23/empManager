@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/Sidebar.css"; // Importing the CSS file
 import { Link } from "react-router";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Sidebar = () => {
   return (
