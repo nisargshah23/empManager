@@ -3,8 +3,11 @@ import axios from "axios";
 import Image from "../assets/image.png";
 import Logo from "../assets/logo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../style/Auth.css";
 import { useNavigate } from "react-router-dom";
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Signup = () => {
@@ -15,8 +18,9 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "user", // Default role
   });
-  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,37 +29,37 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError("");
 
     if (!userData.name || !userData.email || !userData.password || !userData.confirmPassword) {
-      setError("Please fill in all fields.");
+      toast.error("Please fill in all fields.", { autoClose: 60000 });
       return;
     }
 
     if (userData.password !== userData.confirmPassword) {
-      setError("Passwords do not match.");
+      toast.error("Passwords do not match.", { autoClose: 60000 });
       return;
     }
 
     try {
       const response = await axios.post(`${apiUrl}/api/auth/register`, {
-        name: userData.name,
-        email: userData.email,
+        username: userData.email,
         password: userData.password,
+        role: userData.role,
       });
 
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("role", response.data.role);
-        navigate("/dashboard"); // Redirect to dashboard after signup
-      }
+      toast.success(response.data.message || "Registration successful!", { autoClose: 60000 });
+
+      setTimeout(() => navigate("/dashboard"), 2000); // Redirect after 2s
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
+      console.log(err.response)
+      toast.error(err.response.data.error || "Registration failed", { autoClose: 60000 });
     }
   };
 
   return (
     <div className="login-main">
+      <ToastContainer position="top-right" /> {/* Toast messages will appear here */}
+      
       <div className="login-left">
         <img src={Image} alt="Background" />
       </div>
@@ -67,7 +71,7 @@ const Signup = () => {
           <div className="login-center">
             <h2>Sign Up</h2>
             <p>Create a new account</p>
-            {error && <p className="error">{error}</p>}
+
             <form onSubmit={handleSignup}>
               <input
                 type="text"
@@ -83,6 +87,7 @@ const Signup = () => {
                 value={userData.email}
                 onChange={handleChange}
               />
+
               <div className="pass-input-div">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -112,6 +117,12 @@ const Signup = () => {
                   <FaEye onClick={() => setShowConfirmPassword(!showConfirmPassword)} />
                 )}
               </div>
+
+              {/* Role Dropdown */}
+              <select name="role" value={userData.role} onChange={handleChange}>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
 
               <div className="login-center-buttons">
                 <button type="submit">Sign Up</button>
