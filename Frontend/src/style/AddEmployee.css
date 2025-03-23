@@ -1,0 +1,114 @@
+.add-employee-container {
+    width: 50%;
+    margin-left: 30vw;
+    padding: 20px;
+  }
+  
+  .add-employee-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .form-section {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .add-employee-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .profile-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+
+  /* General dropdown styling */
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    appearance: none; /* Remove default browser styles */
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  /* Style on hover and focus */
+  select:hover,
+  select:focus {
+    border-color: #007bff; /* Blue border on hover */
+    outline: none;
+  }
+  
+  /* Dropdown arrow icon */
+  select {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23000' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+  
+  /* Dropdown option styling */
+  select option {
+    padding: 10px;
+    font-size: 16px;
+    background: #fff;
+  }
+  
+  /* Add a subtle shadow */
+  select:focus {
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+  }
+
+  /* Common styles for input fields */
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Focus effect */
+input[type="number"]:focus,
+input[type="date"]:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Placeholder styling */
+input[type="number"]::placeholder,
+input[type="date"]::placeholder {
+  color: #999;
+}
+
+/* Date Picker styling */
+input[type="date"] {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* For Salary Input */
+.salary-input {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Disable default date picker icon for consistency (optional) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}

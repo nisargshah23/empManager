@@ -1,0 +1,85 @@
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    display: block;
+    background-color: white;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #4a47a3;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile Section */
+  .profile {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+  }
+  
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .profile-info {
+    margin-left: 10px;
+  }
+  
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .role {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  /* Menu */
+  .menu-title {
+    font-size: 12px;
+    color: gray;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .menu ul li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Icons */
+  .icon {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #4a47a3;
+  }
+  
