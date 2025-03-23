@@ -96,7 +96,7 @@ router.post("/add", authenticate, authorize(["admin"]), upload.single("image"), 
 });
 
 
-router.put("/update/:id", authenticate, authorize(["user"]), upload.single("image"), async (req, res) => {
+router.put("/update/:id", authenticate, authorize(["admin"]), upload.single("image"), async (req, res) => {
     try {
         const { name, email, position, department, phone, address, salary, dateOfJoining } = req.body;
         let profileImage = "";

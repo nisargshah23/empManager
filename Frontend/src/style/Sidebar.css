@@ -83,3 +83,46 @@
     color: #4a47a3;
   }
   
+  /* Sidebar Styles */
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide by default */
+    transition: left 0.3s ease-in-out;
+    overflow: hidden;
+    position: absolute;
+    display: block;
+    background-color: white;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    
+    font-family: Arial, sans-serif;
+  }
+
+/* Sidebar Open */
+.sidebar.open {
+  left: 0; /* Show when open */
+}
+
+/* Hamburger Menu Button */
+.hamburger-btn {
+  position: fixed;
+  width: 5vw;
+  top: 7px;
+  left: 15px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.3s;
+}
+
+/* Change color when hovered */
+.hamburger-btn:hover {
+  color: #007bff;
+}

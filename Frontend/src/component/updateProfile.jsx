@@ -81,7 +81,7 @@ const UpdateDetails = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/emp/update/${id}`, {
+      const response = await fetch(`${apiUrl}/api/emp/update/${id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

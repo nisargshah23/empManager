@@ -16,7 +16,7 @@ const AddEmployee = () => {
     phone: "",
     password: "",
     position: "",
-    department: "HR",
+    department: "HR",  // ✅ Added department selection
     salary: "",
     role: "employee",
     status: "Active",
@@ -92,6 +92,18 @@ const AddEmployee = () => {
 
           <label>Position:</label>
           <input type="text" name="position" value={formData.position} onChange={handleChange} required />
+
+          <label>Department:</label> {/* ✅ Added department dropdown */}
+          <select name="department" value={formData.department} onChange={handleChange} required>
+            <option value="HR">HR</option>
+            <option value="IT">IT</option>
+            <option value="Sales">Sales</option>
+            <option value="Finance">Finance</option>
+            <option value="Admin">Admin</option>
+          </select>
+
+          <label>Salary:</label>
+          <input type="number" name="salary" value={formData.salary} onChange={handleChange} required />
 
           <label>Profile Image:</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
