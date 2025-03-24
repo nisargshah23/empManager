@@ -138,30 +138,35 @@ router.put("/update/:id", authenticate, authorize(["admin"]), upload.single("ima
     }
 });
 
-router.delete("/delete/:id", authenticate, authorize(["admin"]), async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
     try {
         const stringId = req.params.id;
+        console.log(stringId)
+
+        // Validate ObjectId
+        if (!mongoose.Types.ObjectId.isValid(stringId)) {
+            return res.status(400).json({ success: false, message: "Invalid ID format" });
+        }
 
         // Find the employee
-        const employee = await Employee.findById( new mongoose.Types.ObjectId(stringId));
+        const employee = await Employee.find();
+        console.log(employee)
         if (!employee) {
             return res.status(404).json({ success: false, message: "Employee not found" });
         }
 
-        // If employee has a profile image, delete it from Cloudinary
-        if (employee.profileImage) {
-            const publicId = employee.profileImage.split("/").pop().split(".")[0]; // Extract Cloudinary public ID
-            await cloudinary.uploader.destroy(`employee_profiles/${publicId}`);
-        }
+    
+    
 
         // Delete the employee from the database
-        await Employee.findByIdAndDelete(Obid);
+        await Employee.findByIdAndDelete(stringId);
 
         res.status(200).json({ success: true, message: "Employee deleted successfully" });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }
-});
+})
+
 
 
 
