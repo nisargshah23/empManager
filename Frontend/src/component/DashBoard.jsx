@@ -63,7 +63,7 @@ const Dashboard = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`${apiUrl}/api/emp/update/delete/${empId}`, {
+      const response = await fetch(`${apiUrl}/api/emp/delete/${empId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
